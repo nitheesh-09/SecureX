@@ -11,6 +11,7 @@ interface FindingsListProps {
   onSelectAll: () => void;
   onDeselectAll: () => void;
   disabled?: boolean;
+  onReset?: () => void;
 }
 
 export const FindingsList: React.FC<FindingsListProps> = ({
@@ -20,19 +21,43 @@ export const FindingsList: React.FC<FindingsListProps> = ({
   onSelectAll,
   onDeselectAll,
   disabled = false,
+  onReset,
 }) => {
   if (findings.length === 0) {
     return (
-      <div className="rounded-xs border border-white/[0.08] bg-[#0c0e14] p-8 text-center">
-        <span className="font-mono text-[10px] tracking-widest text-cyan-400 font-bold uppercase block mb-1">
-          SCAN COMPLETE
-        </span>
-        <h3 className="text-base font-bold text-white tracking-tight mt-1">
-          NO PRIVACY EXPOSURES FOUND
-        </h3>
-        <p className="mt-2 text-xs text-neutral-400 max-w-sm mx-auto">
-          Your file contains no detected privacy-sensitive metadata and is safe to share.
-        </p>
+      <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center space-y-6 shadow-sm">
+        <div>
+          <span className="font-mono text-[10px] tracking-widest text-emerald-600 font-bold uppercase block mb-2">
+            SCAN COMPLETE • FILE SECURE
+          </span>
+          <div className="font-mono text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight my-2">
+            100 <span className="text-xl text-slate-400 font-normal">/ 100</span>
+          </div>
+          <span className="inline-block font-mono text-xs font-bold uppercase px-3 py-1 rounded-md border text-emerald-700 border-emerald-200 bg-emerald-50 mt-1">
+            SAFE
+          </span>
+        </div>
+
+        <div className="pt-2 border-t border-slate-200">
+          <h3 className="text-base font-bold text-slate-900 tracking-tight">
+            NO PRIVACY EXPOSURES FOUND
+          </h3>
+          <p className="mt-2 text-xs text-slate-500 max-w-sm mx-auto">
+            Your file contains no detected privacy-sensitive metadata (such as GPS coordinates, camera hardware serials, or personal author info). It is completely clean and safe to share.
+          </p>
+        </div>
+
+        {onReset && (
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={onReset}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 hover:bg-red-700 px-6 py-2.5 font-mono text-xs font-bold tracking-wider text-white transition-all shadow-md shadow-red-600/20 cursor-pointer"
+            >
+              [ SCAN ANOTHER FILE ]
+            </button>
+          </div>
+        )}
       </div>
     );
   }
@@ -54,12 +79,12 @@ export const FindingsList: React.FC<FindingsListProps> = ({
   return (
     <div className="space-y-4">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/[0.08]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
         <div>
-          <span className="font-mono text-[10px] tracking-widest text-cyan-400 font-bold uppercase block mb-0.5">
+          <span className="font-mono text-[10px] tracking-widest text-red-600 font-bold uppercase block mb-0.5">
             SCAN COMPLETE
           </span>
-          <h3 className="font-mono text-sm sm:text-base font-bold text-white tracking-wide uppercase">
+          <h3 className="font-mono text-sm sm:text-base font-bold text-slate-900 tracking-wide uppercase">
             {findings.length} {findings.length === 1 ? 'PRIVACY EXPOSURE' : 'PRIVACY EXPOSURES'} FOUND
           </h3>
         </div>
@@ -70,19 +95,31 @@ export const FindingsList: React.FC<FindingsListProps> = ({
             type="button"
             onClick={onSelectAll}
             disabled={disabled || selectedIds.size === findings.length}
-            className="text-cyan-400 hover:text-cyan-300 disabled:opacity-40 disabled:hover:text-cyan-400 cursor-pointer focus:outline-none"
+            className="text-red-600 hover:text-red-700 font-semibold disabled:opacity-40 cursor-pointer focus:outline-none"
           >
             Select All
           </button>
-          <span className="text-neutral-600">/</span>
+          <span className="text-slate-300">/</span>
           <button
             type="button"
             onClick={onDeselectAll}
             disabled={disabled || selectedIds.size === 0}
-            className="text-neutral-400 hover:text-white disabled:opacity-40 disabled:hover:text-neutral-400 cursor-pointer focus:outline-none"
+            className="text-slate-500 hover:text-slate-900 disabled:opacity-40 cursor-pointer focus:outline-none"
           >
             Deselect All
           </button>
+          {onReset && (
+            <>
+              <span className="text-slate-300">•</span>
+              <button
+                type="button"
+                onClick={onReset}
+                className="text-slate-500 hover:text-red-600 cursor-pointer focus:outline-none font-medium"
+              >
+                Scan Another
+              </button>
+            </>
+          )}
         </div>
       </div>
 

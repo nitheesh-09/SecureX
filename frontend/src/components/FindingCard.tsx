@@ -20,28 +20,28 @@ function getSeverityTheme(severity: SeverityLevel): SeverityTheme {
   switch (severity) {
     case 'CRITICAL':
       return {
-        badge: 'text-rose-400 bg-rose-500/10 border-rose-500/30',
+        badge: 'text-red-700 bg-red-50 border-red-200',
         label: 'CRITICAL RISK',
-        tagBorder: 'border-l-2 border-l-rose-500',
+        tagBorder: 'border-l-4 border-l-red-600',
       };
     case 'HIGH':
       return {
-        badge: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
+        badge: 'text-orange-700 bg-orange-50 border-orange-200',
         label: 'HIGH RISK',
-        tagBorder: 'border-l-2 border-l-amber-500',
+        tagBorder: 'border-l-4 border-l-orange-500',
       };
     case 'MEDIUM':
       return {
-        badge: 'text-yellow-300 bg-yellow-500/10 border-yellow-500/30',
-        label: 'MEDIUM',
-        tagBorder: 'border-l-2 border-l-yellow-500',
+        badge: 'text-amber-700 bg-amber-50 border-amber-200',
+        label: 'MEDIUM RISK',
+        tagBorder: 'border-l-4 border-l-amber-500',
       };
     case 'LOW':
     default:
       return {
-        badge: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30',
-        label: 'LOW',
-        tagBorder: 'border-l-2 border-l-cyan-500',
+        badge: 'text-slate-700 bg-slate-100 border-slate-200',
+        label: 'LOW RISK',
+        tagBorder: 'border-l-4 border-l-slate-400',
       };
   }
 }
@@ -57,10 +57,10 @@ export const FindingCard: React.FC<FindingCardProps> = ({
 
   return (
     <div
-      className={`rounded-sm border p-5 transition-all ${theme.tagBorder} ${
+      className={`rounded-xl border p-4 sm:p-5 transition-all shadow-xs ${theme.tagBorder} ${
         isSelected
-          ? 'border-white/[0.12] bg-[#0c0e14]'
-          : 'border-white/[0.04] bg-[#090b10] opacity-60'
+          ? 'border-red-200 bg-red-50/30'
+          : 'border-slate-200 bg-white opacity-70'
       }`}
     >
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
@@ -68,29 +68,29 @@ export const FindingCard: React.FC<FindingCardProps> = ({
         <div className="flex-1 min-w-0">
           {/* Top metadata tags */}
           <div className="flex items-center gap-3 font-mono text-[10px] tracking-wider mb-2">
-            <span className={`rounded-xs px-2 py-0.5 font-bold uppercase border ${theme.badge}`}>
+            <span className={`rounded px-2 py-0.5 font-bold uppercase border ${theme.badge}`}>
               {theme.label}
             </span>
-            <span className="text-neutral-400 uppercase">
+            <span className="text-slate-500 uppercase">
               {finding.category.replace(/_/g, ' ')}
             </span>
           </div>
 
           {/* Finding Title */}
-          <h4 className="text-base font-bold text-white tracking-tight">
+          <h4 className="text-base font-bold text-slate-900 tracking-tight">
             {finding.title}
           </h4>
 
           {/* Value Display */}
           <div className="mt-2.5 flex flex-wrap items-center gap-2 text-xs font-mono">
-            <span className="text-neutral-500">{finding.field}:</span>
-            <span className="bg-white/[0.03] border border-white/[0.08] px-2 py-0.5 text-cyan-300 rounded-xs break-all">
+            <span className="text-slate-500">{finding.field}:</span>
+            <span className="bg-slate-50 border border-slate-200 px-2 py-0.5 text-red-700 font-semibold rounded break-all">
               {finding.value || '(empty)'}
             </span>
           </div>
 
           {/* Explanation */}
-          <p className="mt-2.5 text-xs text-neutral-400 font-normal leading-relaxed">
+          <p className="mt-2.5 text-xs text-slate-600 font-normal leading-relaxed">
             {finding.explanation}
           </p>
         </div>
@@ -99,10 +99,10 @@ export const FindingCard: React.FC<FindingCardProps> = ({
         <div className="shrink-0 self-start sm:self-center">
           <label
             htmlFor={inputId}
-            className={`inline-flex items-center gap-2 cursor-pointer select-none rounded-sm border px-3.5 py-2 font-mono text-xs font-semibold transition-colors ${
+            className={`inline-flex items-center gap-2 cursor-pointer select-none rounded-lg border px-3.5 py-2 font-mono text-xs font-semibold transition-colors ${
               isSelected
-                ? 'border-cyan-500/40 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20'
-                : 'border-white/[0.1] bg-white/[0.02] text-neutral-400 hover:border-white/[0.2] hover:text-white'
+                ? 'border-red-600 bg-red-600 text-white shadow-xs'
+                : 'border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-50'
             } ${disabled ? 'opacity-40 cursor-not-allowed' : ''}`}
           >
             <input

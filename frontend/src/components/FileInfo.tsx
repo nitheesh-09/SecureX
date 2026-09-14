@@ -38,20 +38,20 @@ export const FileInfo: React.FC<FileInfoProps> = ({
   const format = getFormatShort(mimeType, filename);
 
   return (
-    <div className="rounded-xs border border-white/[0.08] bg-[#0c0e14] p-6 sm:p-7">
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
         {/* File Information */}
         <div className="min-w-0 flex-1">
-          <span className="font-mono text-[10px] tracking-widest text-cyan-400 font-bold uppercase block mb-1">
+          <span className="font-mono text-[10px] tracking-widest text-red-600 font-bold uppercase block mb-1">
             FILE READY
           </span>
-          <h3 className="text-base sm:text-lg font-bold text-white truncate">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate">
             {filename}
           </h3>
 
-          <div className="mt-1.5 flex items-center gap-2.5 font-mono text-xs text-neutral-400">
-            <span className="text-neutral-300 font-medium">{format}</span>
-            <span className="text-neutral-600">•</span>
+          <div className="mt-1.5 flex items-center gap-2.5 font-mono text-xs text-slate-500">
+            <span className="text-slate-800 font-medium">{format}</span>
+            <span className="text-slate-300">•</span>
             <span>{formatBytes(sizeBytes)}</span>
           </div>
         </div>
@@ -62,7 +62,7 @@ export const FileInfo: React.FC<FileInfoProps> = ({
             type="button"
             onClick={onChangeFile}
             disabled={isLoading}
-            className="rounded-xs border border-white/[0.1] bg-transparent px-3.5 py-2 font-mono text-xs text-neutral-400 hover:text-white hover:border-white/[0.2] transition-colors disabled:opacity-40 cursor-pointer"
+            className="rounded-lg border border-slate-300 bg-white px-3.5 py-2 font-mono text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-colors disabled:opacity-40 cursor-pointer"
           >
             Change File
           </button>
@@ -71,11 +71,11 @@ export const FileInfo: React.FC<FileInfoProps> = ({
             type="button"
             onClick={onAnalyze}
             disabled={isLoading}
-            className="inline-flex items-center justify-center gap-2 rounded-xs border border-cyan-400 bg-cyan-500/15 px-5 py-2 font-mono text-xs font-bold tracking-wider text-cyan-300 hover:bg-cyan-500/25 hover:text-white transition-all shadow-[0_0_15px_rgba(0,216,246,0.15)] disabled:opacity-40 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 hover:bg-red-700 px-5 py-2 font-mono text-xs font-bold tracking-wider text-white transition-all shadow-md shadow-red-600/20 disabled:opacity-40 cursor-pointer"
           >
             {isLoading ? (
               <>
-                <span className="h-3 w-3 border-2 border-cyan-300 border-t-transparent rounded-full animate-spin" />
+                <span className="h-3 w-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 <span>SCANNING...</span>
               </>
             ) : (

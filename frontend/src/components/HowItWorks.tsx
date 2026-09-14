@@ -43,16 +43,16 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works-section" className="py-16 border-t border-slate-800/80">
+    <section id="how-it-works-section" className="py-16 border-t border-slate-200">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-red-600">
             Engine Pipeline
           </h3>
-          <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             How SecureX Protects Your Privacy
           </h2>
-          <p className="mt-3 text-sm text-slate-400">
+          <p className="mt-3 text-sm text-slate-600">
             A transparent 6-step privacy verification lifecycle designed for verifiable file security.
           </p>
         </div>
@@ -61,18 +61,18 @@ export const HowItWorks: React.FC = () => {
           {steps.map((item) => (
             <div
               key={item.step}
-              className="relative rounded-2xl border border-slate-800 bg-slate-900/50 p-6 backdrop-blur-sm transition-all hover:border-slate-700 hover:bg-slate-900/80"
+              className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-red-300 hover:shadow-md"
             >
               <div className="flex items-center justify-between mb-4">
-                <span className="text-2xl font-extrabold text-cyan-400/80 font-mono">
+                <span className="text-2xl font-extrabold text-red-600 font-mono">
                   {item.step}
                 </span>
-                <span className="rounded-full bg-slate-800 px-2.5 py-0.5 text-[10px] font-semibold text-slate-300 border border-slate-700">
+                <span className="rounded-full bg-red-50 px-2.5 py-0.5 text-[10px] font-semibold text-red-700 border border-red-200">
                   {item.badge}
                 </span>
               </div>
-              <h4 className="text-base font-bold text-white mb-2">{item.title}</h4>
-              <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+              <h4 className="text-base font-bold text-slate-900 mb-2">{item.title}</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

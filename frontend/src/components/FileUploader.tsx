@@ -111,10 +111,10 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className={`relative flex flex-col items-center justify-center rounded-xs border p-8 sm:p-10 text-center transition-all cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 group ${
+      className={`relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 sm:p-10 text-center transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 group shadow-sm ${
         isDragging
-          ? 'border-cyan-400 bg-cyan-950/[0.15] shadow-[0_0_25px_rgba(0,216,246,0.15)]'
-          : 'border-white/[0.08] bg-[#0c0e14] hover:border-cyan-500/40 hover:bg-[#0e111a]'
+          ? 'border-red-600 bg-red-50/60 shadow-lg shadow-red-600/10'
+          : 'border-slate-300 bg-white hover:border-red-500 hover:bg-slate-50/80'
       } ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
     >
       <input
@@ -129,39 +129,39 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       />
 
       {/* Simple technical document icon */}
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-sm border border-white/[0.08] bg-white/[0.02] text-neutral-400 transition-colors group-hover:border-cyan-500/30 group-hover:text-cyan-400">
-        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-red-200 bg-red-50 text-red-600 transition-colors group-hover:bg-red-100 shadow-xs">
+        <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
         </svg>
       </div>
 
       {/* Primary Headline */}
-      <h2 className="font-mono text-base sm:text-lg font-bold tracking-wider text-white uppercase">
+      <h2 className="font-mono text-base sm:text-lg font-bold tracking-wider text-slate-900 uppercase">
         DROP YOUR FILE
       </h2>
 
       {/* Subtext */}
-      <p className="mt-1.5 text-xs text-neutral-400">
+      <p className="mt-1.5 text-xs text-slate-500">
         Drag & drop or choose a file
       </p>
 
       {/* Choose File Button */}
       <div className="mt-5">
-        <span className="inline-block rounded-sm border border-white/[0.12] bg-white/[0.04] px-5 py-2 font-mono text-xs font-semibold text-neutral-200 group-hover:border-cyan-500/50 group-hover:text-cyan-300 transition-colors">
+        <span className="inline-block rounded-lg bg-red-600 hover:bg-red-700 px-5 py-2 font-mono text-xs font-semibold text-white shadow-xs transition-colors">
           [ Choose File ]
         </span>
       </div>
 
       {/* Technical Specs & Constraints */}
-      <div className="mt-6 flex items-center gap-3 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
+      <div className="mt-6 flex items-center gap-3 font-mono text-[10px] tracking-widest text-slate-400 uppercase font-medium">
         <span>JPEG</span>
-        <span className="text-neutral-600">/</span>
+        <span className="text-slate-300">/</span>
         <span>PNG</span>
-        <span className="text-neutral-600">/</span>
+        <span className="text-slate-300">/</span>
         <span>PDF</span>
       </div>
 
-      <p className="mt-2 font-mono text-[10px] tracking-wider text-neutral-500 uppercase">
+      <p className="mt-2 font-mono text-[10px] tracking-wider text-slate-400 uppercase">
         MAXIMUM 25 MB
       </p>
     </div>

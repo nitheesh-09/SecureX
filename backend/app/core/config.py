@@ -15,8 +15,15 @@ class Settings(BaseModel):
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
     ]
     
+    # JWT Configuration
+    JWT_SECRET: str = Field(default_factory=lambda: os.getenv("JWT_SECRET", "securex-super-secret-key-for-jwt-signing-2026-e2ee"))
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRATION_HOURS: int = 72
+
     # Temporary file storage directory
     TEMP_STORAGE_DIR: str = Field(default_factory=lambda: os.getenv("TEMP_STORAGE_DIR", "./temp_storage"))
     FILE_TTL_MINUTES: int = 15

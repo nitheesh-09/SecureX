@@ -27,6 +27,14 @@ desktop.ini
 credentials.json
 secrets.json
 
+# Databases & SQLite
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+securex.db
+backend/securex.db
+
 # --- Python & FastAPI ---
 __pycache__/
 *.py[cod]
@@ -39,8 +47,9 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
+!frontend/src/lib/
 parts/
 sdist/
 var/

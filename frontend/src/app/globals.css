@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08090d;
-  --foreground: #f4f5f7;
-  --panel-bg: #0e1118;
-  --panel-border: rgba(255, 255, 255, 0.08);
-  --accent-cyan: #00d8f6;
-  --accent-cyan-dim: rgba(0, 216, 246, 0.12);
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --panel-bg: #ffffff;
+  --panel-border: #e2e8f0;
+  --accent-red: #dc2626;
+  --accent-red-hover: #b91c1c;
+  --accent-red-dim: rgba(220, 38, 38, 0.08);
 }
 
 body {
@@ -17,17 +18,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle technical grid */
+/* Subtle red/slate technical grid */
 .tech-grid {
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(220, 38, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 38, 38, 0.04) 1px, transparent 1px);
 }
 
-/* Restrained center glow */
+/* Red ambient glow */
 .portal-glow {
-  background: radial-gradient(circle at 50% 15%, rgba(0, 216, 246, 0.06) 0%, transparent 65%);
+  background: radial-gradient(circle at 50% 15%, rgba(239, 68, 68, 0.07) 0%, transparent 65%);
 }
 
 /* Technical scanning beam animation */
@@ -65,21 +66,21 @@ body {
   animation: beaconPulse 2s ease-in-out infinite;
 }
 
-/* Custom scrollbar */
+/* Custom light scrollbar with red accent on hover */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #08090d;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1c202d;
+  background: #cbd5e1;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2b3247;
+  background: #ef4444;
 }

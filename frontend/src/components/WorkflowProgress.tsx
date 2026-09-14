@@ -21,7 +21,7 @@ export const WorkflowProgress: React.FC<WorkflowProgressProps> = ({
   ];
 
   return (
-    <div className="w-full mb-6 pb-4 border-b border-white/[0.06] flex items-center justify-between sm:justify-start sm:gap-6 font-mono text-[11px] select-none">
+    <div className="w-full mb-6 pb-4 border-b border-slate-200 flex items-center justify-between sm:justify-start sm:gap-6 font-mono text-[11px] select-none">
       {stages.map((stage, idx) => {
         const isCompleted = completedStages.includes(stage.key);
         const isCurrent = currentStage === stage.key && !isCompleted;
@@ -30,15 +30,15 @@ export const WorkflowProgress: React.FC<WorkflowProgressProps> = ({
           <React.Fragment key={stage.key}>
             <div className="flex items-center gap-2">
               {isCompleted ? (
-                <span className="flex h-4 w-4 items-center justify-center rounded-sm bg-cyan-500/20 text-cyan-400 text-[10px] font-bold border border-cyan-500/40">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">
                   ✓
                 </span>
               ) : (
                 <span
                   className={`font-semibold ${
                     isCurrent
-                      ? 'text-cyan-400'
-                      : 'text-neutral-500'
+                      ? 'text-red-600'
+                      : 'text-slate-400'
                   }`}
                 >
                   {stage.num}
@@ -48,10 +48,10 @@ export const WorkflowProgress: React.FC<WorkflowProgressProps> = ({
               <span
                 className={`tracking-wider uppercase ${
                   isCurrent
-                    ? 'text-white font-bold'
+                    ? 'text-slate-900 font-bold'
                     : isCompleted
-                    ? 'text-neutral-300'
-                    : 'text-neutral-500 font-normal'
+                    ? 'text-slate-700'
+                    : 'text-slate-400 font-normal'
                 }`}
               >
                 {stage.label}
@@ -59,7 +59,7 @@ export const WorkflowProgress: React.FC<WorkflowProgressProps> = ({
             </div>
 
             {idx < stages.length - 1 && (
-              <span className="hidden sm:inline-block text-neutral-700">
+              <span className="hidden sm:inline-block text-slate-300">
                 ───
               </span>
             )}
